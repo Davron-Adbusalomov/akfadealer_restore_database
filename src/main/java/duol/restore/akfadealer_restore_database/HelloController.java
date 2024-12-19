@@ -1,5 +1,8 @@
 package duol.restore.akfadealer_restore_database;
 
+import duol.restore.akfadealer_restore_database.config.DatabaseConfig;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -23,14 +26,30 @@ public class HelloController {
     @FXML
     private Label statusLabel;
 
+
+    @FXML
+    public void initialize() {
+        // Load dealer names into the ComboBox
+        loadDealers();
+    }
+
     @FXML
     protected void onBackupAndRestoreButtonClick() {
         String selectedDealer = dealerComboBox.getValue();
         String dealerDb = dealerDatabaseInput.getText();
         String csvPath = csvPathInput.getText();
         String sqlScript = sqlScriptInput.getText();
-
         statusLabel.setText("Processing backup and restore...");
         // Implement your logic for backup and restore here
+    }
+
+    private void loadDealers() {
+        ObservableList<String> dealerNames = FXCollections.observableArrayList();
+
+        // Example: Fetch dealer names from database or add manually
+        dealerNames.addAll("Dealer A", "Dealer B", "Dealer C");
+
+        // Set the items in the ComboBox
+        dealerComboBox.setItems(dealerNames);
     }
 }

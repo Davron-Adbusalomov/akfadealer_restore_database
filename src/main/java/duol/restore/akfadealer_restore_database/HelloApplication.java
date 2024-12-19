@@ -1,5 +1,6 @@
 package duol.restore.akfadealer_restore_database;
 
+import duol.restore.akfadealer_restore_database.config.DatabaseConfig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        DatabaseConfig.getDatabaseConnection();
     }
 
     public static void main(String[] args) {
