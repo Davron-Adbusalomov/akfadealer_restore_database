@@ -15,18 +15,17 @@ public class DealerService {
     public List<Dealer> getDealers() {
         List<Dealer> dealers = new ArrayList<>();
 
-        String query = "SELECT id, name, code FROM dealer"; // Adjust the query based on your table schema
+        String query = "SELECT id, name, dealercode FROM akfadealer-web.dealer"; // Adjust the query based on your table schema
 
         try (Connection connection = DatabaseConfig.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
-            // Iterate through the results and populate the list
             while (resultSet.next()) {
                 Dealer dealer = new Dealer();
                 dealer.setId(resultSet.getInt("id"));
                 dealer.setName(resultSet.getString("name"));
-                dealer.setCode(resultSet.getString("code"));
+                dealer.setCode(resultSet.getString("dealercode"));
                 dealers.add(dealer);
             }
 

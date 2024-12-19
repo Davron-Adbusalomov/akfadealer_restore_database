@@ -1,6 +1,7 @@
 package duol.restore.akfadealer_restore_database;
 
 import duol.restore.akfadealer_restore_database.config.DatabaseConfig;
+import duol.restore.akfadealer_restore_database.service.DealerService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -40,7 +41,8 @@ public class HelloController {
         String csvPath = csvPathInput.getText();
         String sqlScript = sqlScriptInput.getText();
         statusLabel.setText("Processing backup and restore...");
-        // Implement your logic for backup and restore here
+        DealerService dealerService = new DealerService();
+        dealerService.getDealers();
     }
 
     private void loadDealers() {
