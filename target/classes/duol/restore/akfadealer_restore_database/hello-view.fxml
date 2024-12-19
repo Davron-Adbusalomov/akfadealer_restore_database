@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="duol.restore.akfadealer_restore_database.HelloController">
+    <VBox alignment="CENTER" spacing="20.0"
+          style="-fx-border-color: lightgray; -fx-border-radius: 10; -fx-background-radius: 10;
+                 -fx-background-color: white; -fx-padding: 50;">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+
+        <!-- Header Label -->
+        <Label text="Backup and Restore Tool" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+        <!-- Path to CSV -->
+        <VBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Path to CSV:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <TextField fx:id="csvPathInput" promptText="Enter path to CSV file" style="-fx-font-size: 14px; -fx-pref-height: 35px; -fx-border-color: gray">
+                <VBox.margin>
+                    <Insets right="10.0"/>
+                </VBox.margin>
+            </TextField>
+        </VBox>
+
+        <!-- Dealer Database -->
+        <VBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="New Dealer Database (Destination):" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <TextField fx:id="dealerDatabaseInput" promptText="Enter dealer database name" style="-fx-font-size: 14px; -fx-pref-height: 35px; -fx-border-color: gray">
+                <VBox.margin>
+                    <Insets right="10.0"/>
+                </VBox.margin>
+            </TextField>
+        </VBox>
+
+        <!-- Dealer Selection -->
+        <VBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="Select Dealer:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <ComboBox fx:id="dealerComboBox" promptText="Choose dealer" style="-fx-font-size: 14px; -fx-pref-height: 35px; -fx-pref-width: 300px; -fx-border-color: gray">
+                <VBox.margin>
+                    <Insets right="10.0"/>
+                </VBox.margin>
+            </ComboBox>
+        </VBox>
+
+        <!-- SQL Script -->
+        <VBox alignment="CENTER_LEFT" spacing="10.0">
+            <Label text="SQL Script:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <TextArea fx:id="sqlScriptInput" promptText="Enter SQL script" wrapText="true" style="-fx-font-size: 14px; -fx-pref-height: 200px; -fx-pref-width: 300px; -fx-border-color: gray">
+                <VBox.margin>
+                    <Insets right="10.0"/>
+                </VBox.margin>
+            </TextArea>
+        </VBox>
+
+        <!-- Button -->
+        <Button text="Backup and Restore" onAction="#onBackupAndRestoreButtonClick" style="-fx-font-size: 14px; -fx-padding: 10 130 10 130;"/>
+
+        <!-- Status Label -->
+        <Label fx:id="statusLabel" text="Status: Waiting for actions" style="-fx-font-size: 14px; -fx-text-fill: gray;"/>
+    </VBox>
+</StackPane>
