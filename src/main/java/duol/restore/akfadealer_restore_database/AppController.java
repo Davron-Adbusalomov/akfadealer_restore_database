@@ -52,6 +52,16 @@ public class AppController {
         String sqlScript = sqlScriptInput.getText();
         statusLabel.setText("Processing backup and restore...");
 
+
+        if (selectedDealer != null){
+            DealerService dealerService = new DealerService();
+            dealerService.makeLastSyncNull(selectedDealer.getId());
+
+//          copy to csv
+            dealerService.exportToCSV();
+        }
+
+
     }
 
     private void loadDealers() {
