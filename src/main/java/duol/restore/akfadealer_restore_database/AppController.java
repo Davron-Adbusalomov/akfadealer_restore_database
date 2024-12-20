@@ -21,9 +21,6 @@ public class AppController {
     @FXML
     private TextField dealerDatabaseInput;
 
-//    @FXML
-//    private TextField csvPathInput;
-
     @FXML
     private ComboBox<Dealer> dealerComboBox;
 
@@ -60,7 +57,7 @@ public class AppController {
             dealerService.makeLastSyncNull(selectedDealer.getId());
 
 //          copy to csv
-            dealerService.exportToCSV();
+            dealerService.exportToCSV(csvPath);
         }
 
 
