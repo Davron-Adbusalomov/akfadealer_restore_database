@@ -15,7 +15,7 @@ public class DealerService {
     public List<Dealer> getDealers() {
         List<Dealer> dealers = new ArrayList<>();
 
-        String query = "SELECT id, name, dealercode FROM akfadealer-web.dealer"; // Adjust the query based on your table schema
+        String query = "SELECT id, name, dealercode FROM akfadealer_web.dealer"; // Adjust the query based on your table schema
 
         try (Connection connection = DatabaseConfig.getDatabaseConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);

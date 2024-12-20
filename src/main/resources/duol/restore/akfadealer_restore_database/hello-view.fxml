@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.HBox?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="duol.restore.akfadealer_restore_database.HelloController">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="duol.restore.akfadealer_restore_database.AppController">
     <VBox alignment="CENTER" spacing="20.0"
           style="-fx-border-color: lightgray; -fx-border-radius: 10; -fx-background-radius: 10;
                  -fx-background-color: white; -fx-padding: 50;">
@@ -23,13 +23,22 @@
         <Label text="Backup and Restore Tool" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
         <!-- Path to CSV -->
+<!--        <VBox alignment="CENTER_LEFT" spacing="10.0">-->
+<!--            <Label text="Path to CSV:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>-->
+<!--            <TextField fx:id="csvPathInput" promptText="Enter path to CSV file" style="-fx-font-size: 14px; -fx-pref-height: 35px; -fx-border-color: gray">-->
+<!--                <VBox.margin>-->
+<!--                    <Insets right="10.0"/>-->
+<!--                </VBox.margin>-->
+<!--            </TextField>-->
+<!--        </VBox>-->
+
         <VBox alignment="CENTER_LEFT" spacing="10.0">
             <Label text="Path to CSV:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
-            <TextField fx:id="csvPathInput" promptText="Enter path to CSV file" style="-fx-font-size: 14px; -fx-pref-height: 35px; -fx-border-color: gray">
-                <VBox.margin>
-                    <Insets right="10.0"/>
-                </VBox.margin>
-            </TextField>
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <TextField fx:id="csvPathInput" promptText="Enter path to CSV file"
+                           style="-fx-font-size: 14px; -fx-pref-height: 35px; -fx-border-color: gray; -fx-pref-width: 500px;"/>
+                <Button text="Browse" fx:id="browseButton" style="-fx-font-size: 14px; -fx-pref-height: 35px;"/>
+            </HBox>
         </VBox>
 
         <!-- Dealer Database -->

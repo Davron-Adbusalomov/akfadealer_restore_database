@@ -28,6 +28,9 @@ public class DatabaseConfig {
 
             // Establish the connection
             Connection connection = DriverManager.getConnection(url, username, password);
+            if (connection != null){
+                System.out.println("Connection established..");
+            }
             return connection;
 
         } catch (Exception ex) {

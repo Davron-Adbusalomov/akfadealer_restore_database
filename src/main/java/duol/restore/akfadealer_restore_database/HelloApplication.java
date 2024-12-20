@@ -17,7 +17,6 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        DatabaseConfig.getDatabaseConnection();
     }
 
     public static void main(String[] args) {
