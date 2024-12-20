@@ -1,5 +1,6 @@
 package duol.restore.akfadealer_restore_database.service;
 
+import duol.restore.akfadealer_restore_database.config.CopyUtil;
 import duol.restore.akfadealer_restore_database.config.DatabaseConfig;
 import duol.restore.akfadealer_restore_database.model.Dealer;
 import javafx.scene.control.Alert;
@@ -205,50 +206,52 @@ public class DealerService {
 //        }
 //    }
 
-    public void exportToCSV() {
-        String query = "SELECT * FROM akfadealer_web.dealer";
-        String filePath = "D:\\Games\\akfa_dealer_web_dev2akfadealer_web_dealer.csv"; // CSV fayl yo'li
+    public void exportToCSV() throws SQLException, IOException {
+//        String query = "SELECT * FROM akfadealer_web.dealer";
+//        String filePath = "D:\\Games\\akfa_dealer_web_dev2akfadealer_web_dealer.csv"; // CSV fayl yo'li
+//
+//        try (Connection conn = DatabaseConfig.getDatabaseConnection();
+//             Statement stmt = conn.createStatement();
+//             ResultSet rs = stmt.executeQuery(query);
+//             FileWriter writer = new FileWriter(filePath)) {
+//
+//            // CSV faylga ustun nomlarini yozish
+//            int columnCount = rs.getMetaData().getColumnCount();
+//            for (int i = 1; i <= columnCount; i++) {
+//                writer.append(rs.getMetaData().getColumnName(i));
+//                if (i < columnCount) writer.append(',');
+//            }
+//            writer.append('\n');
+//
+//            // Ma'lumotlarni CSV faylga yozish
+//            while (rs.next()) {
+//                for (int i = 1; i <= columnCount; i++) {
+//                    writer.append(rs.getString(i));
+//                    if (i < columnCount) writer.append(',');
+//                }
+//                writer.append('\n');
+//            }
+//
+//            // Success Alert
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Export Successful");
+//            alert.setHeaderText("CSV Export");
+//            alert.setContentText("Data has been successfully exported to " + filePath);
+//            alert.showAndWait();
+//
+//        } catch (SQLException | IOException e) {
+//            e.printStackTrace();
+//            // Error Alert
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Export Failed");
+//            alert.setHeaderText("Error Exporting Data");
+//            alert.setContentText("An error occurred while exporting data to CSV.");
+//            alert.showAndWait();
+//        }
+//    }
 
-        try (Connection conn = DatabaseConfig.getDatabaseConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query);
-             FileWriter writer = new FileWriter(filePath)) {
+        CopyUtil.copyToFile(DatabaseConfig.getDatabaseConnection(), "D:\\Games\\akfa_dealer_web_dev2akfadealer_web_dealer.csv", "akfadealer_web.t_invoice_item");
 
-            // CSV faylga ustun nomlarini yozish
-            int columnCount = rs.getMetaData().getColumnCount();
-            for (int i = 1; i <= columnCount; i++) {
-                writer.append(rs.getMetaData().getColumnName(i));
-                if (i < columnCount) writer.append(',');
-            }
-            writer.append('\n');
-
-            // Ma'lumotlarni CSV faylga yozish
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    writer.append(rs.getString(i));
-                    if (i < columnCount) writer.append(',');
-                }
-                writer.append('\n');
-            }
-
-            // Success Alert
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Export Successful");
-            alert.setHeaderText("CSV Export");
-            alert.setContentText("Data has been successfully exported to " + filePath);
-            alert.showAndWait();
-
-        } catch (SQLException | IOException e) {
-            e.printStackTrace();
-            // Error Alert
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Export Failed");
-            alert.setHeaderText("Error Exporting Data");
-            alert.setContentText("An error occurred while exporting data to CSV.");
-            alert.showAndWait();
-        }
     }
-
-
 }
 

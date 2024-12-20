@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class AppController {
@@ -45,7 +47,7 @@ public class AppController {
     }
 
     @FXML
-    protected void onBackupAndRestoreButtonClick() {
+    protected void onBackupAndRestoreButtonClick() throws SQLException, IOException {
         Dealer selectedDealer = dealerComboBox.getValue();
         String dealerDb = dealerDatabaseInput.getText();
         String csvPath = csvPathInput.getText();
