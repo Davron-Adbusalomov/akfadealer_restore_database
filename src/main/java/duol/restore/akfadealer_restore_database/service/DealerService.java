@@ -9,10 +9,21 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class DealerService {
+    private static Map<String, String> tableMap = new HashMap<>();
+    static {
+        tableMap.put("dealer_role", "t_dealer_role");
+        tableMap.put("dealer_user", "t_dealer_user");
+        tableMap.put("dealer_client", "t_dealer_client");
+        tableMap.put("payment_receipt", "t_payment_receipt");
+        tableMap.put("invoice", "t_invoice");
+        tableMap.put("invoice_item", "t_invoice_item");
+        tableMap.put("log_history", "t_log_history");
+    }
 
     public List<Dealer> getDealers() {
         List<Dealer> dealers = new ArrayList<>();
@@ -48,15 +59,19 @@ public class DealerService {
 
             preparedStatement.executeUpdate();
 
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void exportToCSV(String path) throws SQLException, IOException {
-        File file = new File(path + "/invoice_item.csv");
-        CopyUtil.copyToFile(DatabaseConfig.getDatabaseConnection(), file.getAbsolutePath(), "(select * from akfadealer_web.t_invoice_item where dealer_id=101)");
-        System.out.println("CSV export completed successfully.");
+    public void exportToCSV(String path, Long dealerId) throws SQLException, IOException {
+        for (Map.Entry<String, String> entry: tableMap.entrySet()) {
+            File file = new File(path + "/" + entry.getKey() + "_" + dealerId + "_" + LocalDate.now() + ".csv");
+            CopyUtil.copyToFile(DatabaseConfig.getDatabaseConnection(), file.getAbsolutePath(), "(select * from akfadealer_web."+entry.getValue()+" where dealer_id=101)");
+            System.out.println(entry.getKey().toUpperCase(Locale.ROOT) + " CSV export completed successfully.");
+        }
     }
 }
 

@@ -57,7 +57,7 @@ public class AppController {
             dealerService.makeLastSyncNull(selectedDealer.getId());
 
 //          copy to csv
-            dealerService.exportToCSV(csvPath);
+            dealerService.exportToCSV(csvPath, selectedDealer.getId());
         }
 
 
